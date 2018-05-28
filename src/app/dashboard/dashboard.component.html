@@ -1,0 +1,30 @@
+  <div class="min-height container">
+      <div class="row">
+        <div class="py-5 m-auto">
+          <ul class="d-flex parent flex-wrap">
+            <div *ngFor="let item of itemsObs | async" class="d-flex child" >
+              <div class="card">
+                <div class="card-header">
+                  <h3><a href="#">{{item.title}}</a> </h3>
+                </div>
+                <div class="card-body">
+                  <p>ID: {{item.itemId}}</p>
+                  <p>{{item.description}}</p>
+                  <p>
+                    {{item.quantity}} items left!
+                  </p>
+                  <p class="btn btn-success">
+                    {{item.price | currency}}
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <div>
+                    <button (click)="addToCart(item)" class="btn btn-blue" [ngClass]="item.quantity > 0 ? '': 'disabled'" >Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>

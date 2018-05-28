@@ -1,0 +1,52 @@
+<div class="container-login100" style="background-image: url('../../assets/bg-01.jpg');">
+  <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+    <form class="login100-form validate-form">
+      <span class="login100-form-title p-b-49">
+        Register
+      </span>
+
+      <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+        <span class="label-input100">Email</span>
+        <input class="input100" type="text" name="username"
+        type="text"  [(ngModel)]="username"
+        placeholder="Type your Email">
+        <span class="focus-input100" data-symbol=""></span>
+      </div>
+
+      <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+        <span class="label-input100">Password</span>
+        <input class="input100" placeholder="Type your password"
+        name="password" type="password" [(ngModel)]="password">
+        <span class="focus-input100" data-symbol=""></span>
+      </div>
+
+      <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+        <span class="label-input100">Confirm Password</span>
+        <input class="input100" placeholder="Type your password"
+        name="passwordConf" type="password" [(ngModel)]="passwordConf">
+        <span class="focus-input100" data-symbol=""></span>
+      </div>
+
+      <div class="container-login100-form-btn py-3">
+        <div class="wrap-login100-form-btn">
+          <div class="login100-form-bgbtn"></div>
+          <button class="login100-form-btn" (click)="signUp($event)">
+            Sign Up
+          </button>
+        </div>
+      </div>
+
+      <!-- <div class="txt1 text-center p-t-54 p-b-20">
+        <span>
+          Or Sign Up Using
+        </span>
+      </div>
+
+      <div class="flex-c-m">
+        <a href="#" class="login100-social-item bg1">
+          <i class="fa fa-facebook"></i>
+        </a>
+      </div> -->
+    </form>
+  </div>
+</div>

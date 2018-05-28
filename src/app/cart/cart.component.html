@@ -1,0 +1,41 @@
+<div class="min-height container">
+  <div class="row">
+    <div class="py-5 m-auto">
+      <ul class="d-flex parent flex-wrap">
+        <div class="card w-100 my-cart">
+          <div class="card-header">
+            My Cart
+          </div>
+          <div class="card-body">
+            <table>
+              <tr>
+                <th>Item ID</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Edit</th>
+              </tr>
+
+              <tr *ngFor="let item of itemsObs | async"  >
+                <td>{{item.itemId}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.price | currency}}</td>
+                <td style="display:flex">
+                  <button class="btn btn-remove" (click)="removeFromCart(item)"></button>
+                  <p class="item-count">{{item.count}}</p>
+                  <button class="btn btn-add" (click)="addToCart(item)"></button>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-blue" (click)="buy()">Αγορά</button>
+          </div>
+        </div>
+      </ul>
+      <div class="qr-container py-3" [hidden]="qrVisible" >
+        <p class="my-3">Scan the code to pay with the App</p>
+        <qrcode [qrdata]="qrCode" [size]="256" [level]="'M'"></qrcode>
+      </div>
+    </div>
+  </div>
+</div>
