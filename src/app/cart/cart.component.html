@@ -38,11 +38,13 @@
       </ul>
 
       <div class="qr-container py-3 d-flex flex-column" *ngIf="!qrVisible" >
-        <p class="my-3 m-auto text-center">Scan the code to pay with the POS App!</p>
-        <qrcode class="m-auto" [qrdata]="qrCode" [size]="256" [level]="'M'"></qrcode>
+        <p class="my-2 mx-auto text-center">Scan the code to pay with the POS App!</p>
+        <a class="my-2 mx-auto text-center" [href]="qrCode">click here!</a>
+        <p class="my-2 mx-auto text-center">or scan this</p>
+        <qrcode class="mx-auto my-2" [qrdata]="qrCode" [size]="256" [level]="'M'"></qrcode>
       </div>
     </div>
-    <div *ngIf="!hasItems" class="py-5 m-auto my-cart-cont">
+    <div *ngIf="!hasItems" class="py-2 m-auto my-cart-cont">
         No items here.
         <br>
         Find some

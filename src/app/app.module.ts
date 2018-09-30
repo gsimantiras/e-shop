@@ -5,7 +5,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { NgModule, enableProdMode } from '@angular/core';
+import { NgModule, enableProdMode, LOCALE_ID } from '@angular/core';
 
 
 import { RouterModule, Routes } from '@angular/router';
@@ -31,6 +31,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 const appRoutes: Routes = [
   { path: 'main', component: LandingComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: '', component: DashboardComponent },
   { path: 'dashboard/cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -63,8 +64,7 @@ const notifOptions = {
       storageType: 'localStorage'
     }),
     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }
+      appRoutes
     ),
     AngularFireModule.initializeApp( {
       apiKey: 'AIzaSyDYxsEKo1bcUTla_oVjsHNJdUvci0AtaGs',
@@ -81,7 +81,7 @@ const notifOptions = {
   ],
   exports:  [],
   providers: [
-    AuthService
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })
