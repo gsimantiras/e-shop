@@ -1,21 +1,25 @@
+
+<div class="loader-container" *ngIf="showLoader">
+    <div class="loader"></div>
+  </div>
 <div class="min-height container">
   <div class="row">
-    <div class="py-5 m-auto">
+    <div class="py-5 m-auto my-cart-cont" *ngIf="hasItems">
       <ul class="d-flex parent flex-wrap">
-        <div class="card w-100 my-cart">
+        <div class="card w-100 my-cart" >
           <div class="card-header">
             My Cart
           </div>
           <div class="card-body">
-            <table>
-              <tr>
+            <table width="100%">
+              <tr id="t-headers">
                 <th>Item ID</th>
                 <th>Item</th>
                 <th>Price</th>
                 <th>Edit</th>
               </tr>
 
-              <tr *ngFor="let item of itemsObs | async"  >
+              <tr *ngFor="let item of itemsObs | async" class="tr-item" >
                 <td>{{item.itemId}}</td>
                 <td>{{item.title}}</td>
                 <td>{{item.price | currency}}</td>
@@ -32,10 +36,18 @@
           </div>
         </div>
       </ul>
-      <div class="qr-container py-3" [hidden]="qrVisible" >
-        <p class="my-3">Scan the code to pay with the App</p>
-        <qrcode [qrdata]="qrCode" [size]="256" [level]="'M'"></qrcode>
+
+      <div class="qr-container py-3 d-flex flex-column" *ngIf="!qrVisible" >
+        <p class="my-3 m-auto text-center">Scan the code to pay with the POS App!</p>
+        <qrcode class="m-auto" [qrdata]="qrCode" [size]="256" [level]="'M'"></qrcode>
       </div>
     </div>
+    <div *ngIf="!hasItems" class="py-5 m-auto my-cart-cont">
+        No items here.
+        <br>
+        Find some
+        <br>
+        <button (click)="goToDash()" class="btn btn-blue" >Here!</button>
+      </div>
   </div>
 </div>

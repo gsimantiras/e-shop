@@ -12,6 +12,7 @@ import { NotificationsService } from 'angular2-notifications';
 })
 export class DashboardComponent implements OnInit {
   itemsObs: Observable<any[]>;
+  public showLoader= true;
 
   constructor(
     private db: AngularFireDatabase,
@@ -21,8 +22,10 @@ export class DashboardComponent implements OnInit {
 
   }
 
+
   ngOnInit() {
     this.itemsObs = this.getItems('/items');
+    this.itemsObs.subscribe(() => this.showLoader = false)
   }
 
 
@@ -32,7 +35,9 @@ export class DashboardComponent implements OnInit {
 
 
   addToCart(item) {
-    var res = this.auth.addToCart(item, 1);
+    if(item.quantity>0){
+      var res = this.auth.addToCart(item, 1);
+    }
   }
 }
 

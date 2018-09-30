@@ -503,10 +503,12 @@ iframe {
 .child > .card{
   background: aliceblue;
 }
-.btn-blue{
-  background:blue;
-  color:white;
+
+
+.card{
+  width:100%;
 }
+
 @media screen and(max-width:1199px){
   .child{
     width:calc(100% * (1/3));
@@ -515,6 +517,48 @@ iframe {
 }
 
 @media screen and(max-width:769px){
+  #t-headers{
+    display: none
+  }
+  .tr-item> td{
+    padding-left: 5px;
+    border:none!important;
+  }
+  .tr-item> td::before{
+    padding-right: 10px;
+  }
+  .tr-item> td:nth-child(1)::before {
+    content: "Item id:";
+  }
+  .tr-item> td:nth-child(2)::before {
+    content: "Description:";
+  }
+  .tr-item> td:nth-child(3)::before {
+    content: "Price:";
+  }
+  .tr-item> td:nth-child(4)::before {
+    content: "Quantity:";
+  }
+  .my-cart-cont{
+    min-width: 100%;
+  }
+  .child{
+    max-width: 100%;
+  }
+  .card{
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .row{
+    margin:0!important;
+  }
+  tr{
+    display: flex;
+    flex-direction: column;
+  }
+  .btn{
+    width: 100%!important;
+  }
   .parent{
     -ms-flex-pack: distribute !important;
     justify-content: space-around !important;
@@ -533,7 +577,7 @@ iframe {
 }
 
 .btn-blue:hover{
-  background:(0, 0, 255, .8)!important;
+  background:#3838d1!important;
 }
 
 .btn-red {
@@ -543,4 +587,58 @@ iframe {
 
 .btn-red:hover{
   background:(255, 0, 0, .8)!important;
+}
+
+
+@media screen and (max-width:991px){
+  h1{
+    font-size: 2.3rem;
+    line-height: 4rem;
+  }
+  .row{
+    margin:0;
+  }
+}
+.loader-container{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.loader {
+  margin: auto;
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #7c7cfd;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  z-index: 1000;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+@media screen and (max-width:450px){
+  h1{
+    font-size: 1.8rem;
+    line-height: 3.4rem;
+  }
+}
+
+.background-container{
+  width: 100%;
+  min-height: 100vh;
+  top: 0;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -10000;
 }

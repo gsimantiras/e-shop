@@ -1,6 +1,11 @@
 .my-cart {
   min-width: 300px;
 }
+@media screen and (max-width:778px){
+  .my-cart{
+    min-width: unset;
+  }
+}
 
 td, th {
   padding: 10px;

@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  signUp(){
+  signUp(e:any){
     this.auth.signUpWithEmail(this.username, this.password);
   }
 }

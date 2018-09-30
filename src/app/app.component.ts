@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   title = 'E-Shop';
   currentYear: number;
   currentUser: string;
+  public showLoader = true;
 
   constructor(
     public auth: AuthService
@@ -39,7 +40,15 @@ export class AppComponent implements OnInit {
       this.auth.signOut();
     }else{
       this.auth.router.navigate(['/login'])
+    }
+  }
 
+  openMenu(){
+    const menu = document.getElementById('navbarSupportedContent');
+    if (menu.classList.contains('collapse')){
+      menu.className = 'navbar-collapse ml-auto' ;
+    } else{
+      menu.className = 'collapse navbar-collapse ml-auto' ;
     }
   }
 }

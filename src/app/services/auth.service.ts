@@ -17,6 +17,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class AuthService {
   private user: firebase.User = null;
   private userObs: Observable<firebase.User>
+  public loading = false;
 
   constructor(
     private db: AngularFireDatabase,
@@ -38,7 +39,8 @@ export class AuthService {
       this.setUser(authState);
       this.router.navigate(['/dashboard']);
     }).catch(error => {
-      alert(error.message);
+
+      this.notificationsService.error('Error', error.message);
     });
   }
 
@@ -54,7 +56,7 @@ export class AuthService {
     this._firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
     .then(success => {
       this.signInWithEmail(email, password);
-      this.getUser().sendEmailVerification();
+      // this.getUser().sendEmailVerification();
     })
     .catch(error => {
       alert(error.message);
@@ -98,7 +100,7 @@ export class AuthService {
     }
 
     itemRef.update(itemModel).then(success=>{
-      this.notificationsService.success('Cart', 'Item Added to your cart');
+      this.notificationsService.success('Cart', 'Cart Updated');
     }, reject =>{
       this.notificationsService.error('Cart', 'Action rejected.');
     })
@@ -124,6 +126,12 @@ export class AuthService {
     this.local.remove(key);
   }
 
+  public showLoader(){
+    this.loading = true;
+  }
+  public hideLoader(){
+    this.loading = false;
+  }
 }
 
 

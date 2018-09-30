@@ -66,7 +66,14 @@ const notifOptions = {
       appRoutes,
       { enableTracing: true }
     ),
-    AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
+    AngularFireModule.initializeApp( {
+      apiKey: 'AIzaSyDYxsEKo1bcUTla_oVjsHNJdUvci0AtaGs',
+      authDomain: 'e-shop-23fd2.firebaseapp.com',
+      databaseURL: 'https://e-shop-23fd2.firebaseio.com',
+      projectId: 'e-shop-23fd2',
+      storageBucket: 'e-shop-23fd2.appspot.com',
+      messagingSenderId: '708266166078'
+    }, 'angular-auth-firebase'),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     QRCodeModule,

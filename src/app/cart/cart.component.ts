@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Product } from './../../classes/classes';
 import { inject } from '@angular/core/testing';
 import { NotificationsService } from 'angular2-notifications';
@@ -17,17 +18,31 @@ export class CartComponent implements OnInit {
   itemsObs: Observable<any[]>;
   items = new Array();
   public qrVisible = true;
+  public showLoader= true;
+  public hasItems = false;
 
   constructor(
     private auth:AuthService,
     private db: AngularFireDatabase,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private router: Router
   ) {
     var that = this;
-
+    if(!this.auth.isLoggedIn()){
+      this.router.navigate(["/login"]);
+    }
     this.itemsObs = this.getItems('/cart');
+    this.itemsObs.subscribe(()=>{
+      this.showLoader=false;
+      this.hasItems = false;
+    });
+
+
     this.itemsObs.forEach(element => {
       this.items.push(element.map((productData: any) => {
+        if (element.length >0){
+          this.hasItems = true;
+        }
         return new Product(
           productData.itemId,
           productData.title,
@@ -35,12 +50,14 @@ export class CartComponent implements OnInit {
           productData.count,
           productData.description
         );
+
       }));
     });
   }
 
   ngOnInit() {
     // this.qrCode='http://www.nfc-transactions-app.com/data';
+
   }
 
   getItems(listPath): Observable<any[]> {
@@ -49,6 +66,7 @@ export class CartComponent implements OnInit {
       equalTo: this.auth.getUser().uid
     };
     return this.db.list(listPath + '/'+ this.auth.getUser().uid).valueChanges();
+
   }
 
 
@@ -66,12 +84,15 @@ export class CartComponent implements OnInit {
       cart: 'yes',
       user: this.auth.getUser().email,
       items: this.items
-
     };
 
     this.qrCode='http://www.nfc-transactions-app.com/data?' + this.auth.getUser().uid;
     //  JSON.stringify(data);
     this.qrVisible = false;
+  }
+
+  goToDash(){
+    this.router.navigate(["/dashboard"]);
   }
 }
 
