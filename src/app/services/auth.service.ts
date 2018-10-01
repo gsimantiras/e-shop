@@ -30,7 +30,6 @@ export class AuthService {
     if(this.user != null){
       this.userObs = _firebaseAuth.authState;
     }
-
   }
 
   public signInWithEmail(email: string, password: string)  {
@@ -39,7 +38,6 @@ export class AuthService {
       this.setUser(authState);
       this.router.navigate(['/dashboard']);
     }).catch(error => {
-
       this.notificationsService.error('Error', error.message);
     });
   }
@@ -56,7 +54,6 @@ export class AuthService {
     this._firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
     .then(success => {
       this.signInWithEmail(email, password);
-      // this.getUser().sendEmailVerification();
     })
     .catch(error => {
       alert(error.message);

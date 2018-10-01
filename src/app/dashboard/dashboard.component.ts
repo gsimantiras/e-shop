@@ -22,23 +22,13 @@ export class DashboardComponent implements OnInit {
 
   }
 
-
   ngOnInit() {
     this.itemsObs = this.getItems('/items');
     this.itemsObs.subscribe(() => this.showLoader = false)
   }
 
-
   getItems(listPath): Observable<any[]> {
     return this.db.list(listPath).valueChanges();
   }
 
-
-  addToCart(item) {
-    if(item.quantity>0){
-      var res = this.auth.addToCart(item, 1);
-    }
-  }
 }
-
-

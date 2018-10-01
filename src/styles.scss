@@ -562,12 +562,32 @@ iframe {
   padding: 10px;
 }
 
-.child>.card {
+.child .card {
   background: aliceblue;
 }
 
+.d-flex.child  > * {
+  width: 100%;
+}
 .card {
   width: 100%;
+  height:100%;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.child .card-body p.btn {
+  margin-top: auto;
+  margin-left: auto;
+}
+
+.child .card-body p {
+  margin-top: 5px;
 }
 
 @media screen and(max-width:1199px) {

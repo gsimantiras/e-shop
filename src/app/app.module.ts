@@ -27,6 +27,7 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angularx-qrcode';
+import { ItemComponent } from './item/item.component';
 
 const appRoutes: Routes = [
   { path: 'main', component: LandingComponent },
@@ -51,7 +52,8 @@ const notifOptions = {
     DashboardComponent,
     CartComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,

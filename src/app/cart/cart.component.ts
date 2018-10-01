@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
   public qrCode: string = null;
   itemsObs: Observable<any[]>;
   items = new Array();
-  public qrVisible = true;
+  public qrVisible = false;
   public showLoader = true;
   public hasItems = false;
   public navLink: string;
@@ -55,7 +55,6 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.qrCode='http://www.nfc-transactions-app.com/data';
   }
 
   getItems(listPath): Observable<any[]> {
@@ -85,8 +84,7 @@ export class CartComponent implements OnInit {
 
     this.qrCode =
       "http://www.nfc-transactions-app.com/data?" + this.auth.getUser().uid;
-    //  JSON.stringify(data);
-    this.qrVisible = false;
+    this.qrVisible = true;
   }
 
   goToDash() {
